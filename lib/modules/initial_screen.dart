@@ -23,7 +23,7 @@ class InitialScreen extends ModularStatelessWidget<InitialModule> {
             },
           )
         ],
-        title: Text(tr(context, 'TITLE')), //TODO provide translation
+        title: Text(tr(context, 'Title')), //TODO provide translation
       ),
       body: _InitialWidget(), // body(context),
       floatingActionButton: FloatingActionButton(
