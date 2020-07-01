@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const databaseName;
+
 const initalRoute = '/';
 
 get modeIcon => Icon(

@@ -2,6 +2,7 @@ import '../modules/initial_module.dart';
 import '../resources/app_localizations.dart';
 import '../resources/constants.dart' as Constants;
 
+import 'package:sqlite_controller/sqlite_controller.dart' as SQL;
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mode_theme/mode_theme.dart';
@@ -40,5 +41,9 @@ class _InitialWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text('Initial Widget');
+  }
+
+  void _buildDatabase() async {
+    final controller = await SQL.SqliteController.initialize(name: Constants.databaseName);
   }
 }
