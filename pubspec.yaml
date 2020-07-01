@@ -1,4 +1,4 @@
-name: elapser
+name: sqliteResearch
 description: A new Flutter project.
 publish_to: "none"
 version: 0.0.1+1
@@ -24,6 +24,13 @@ dependencies:
   tracers:
     git:
       url: https://github.com/GitHubStuff/tracers.git
+  # Current Project
+  sqlite_controller:
+    git:
+      url: https://github.com/GitHubStuff/sqlite_controller.git
+  sqlite_developer:
+    git:
+      url: https://github.com/GitHubStuff/sqlite_developer.git
 
 dev_dependencies:
   flutter_test:

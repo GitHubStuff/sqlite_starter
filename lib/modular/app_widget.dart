@@ -5,7 +5,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mode_theme/mode_theme.dart';
+import 'package:sqlite_developer/sqlite_developer.dart';
+import 'package:sqlite_controller/sqlite_controller.dart' as SQL;
 
+import '../modules/initial_screen.dart';
 import 'logging_bloc_delegate.dart';
 import '../resources/constants.dart' as Constants;
 import '../resources/app_localizations.dart';
@@ -56,6 +59,11 @@ class AppWidget extends StatelessWidget {
 
   Widget _materialApp(BuildContext context, ThemeData themeData) {
     return MaterialApp(
+      home: SqliteScreenWidget(
+            childWidget: InitialScreen(),
+            sqliteIdentity: SQL.SQLiteIdentity(databaseName: 'flutter_sqlite_developer.db'),
+            enabled: true,
+          ),
       title: 'FHCP',
       theme: themeData,
       initialRoute: Constants.initalRoute,
