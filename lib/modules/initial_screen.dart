@@ -1,3 +1,5 @@
+import 'package:tracers/tracers.dart' as Log;
+
 import '../modules/initial_module.dart';
 import '../resources/app_localizations.dart';
 import '../resources/constants.dart' as Constants;
@@ -40,10 +42,101 @@ class InitialScreen extends ModularStatelessWidget<InitialModule> {
 class _InitialWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    _buildDatabase();
     return Text('Initial Widget');
   }
 
   void _buildDatabase() async {
-    final controller = await SQL.SqliteController.initialize(name: Constants.databaseName);
+    try {
+      await SQL.SqliteController.initialize(name: Constants.databaseName);
+      await _buildSiblings();
+      await _buildAddress();
+      await _buildName();
+      _loading();
+    } catch (error) {
+      Log.e('${error.toString()}');
+    }
+  }
+
+  Future<void> _buildSiblings() async {
+    try {
+      final String create = '''
+      CREATE TABLE IF NOT EXISTS siblings (
+         addressId INTEGER,
+         nameId INTEGER,
+         PRIMARY KEY (addressId, nameId),
+         FOREIGN KEY (addressId)
+           REFERENCES address (rowid),
+         FOREIGN KEY (nameId)
+           REFERENCES name (rowid)
+      )
+      ''';
+      await SQL.SqliteController.database.execute(create);
+    } catch (error) {
+      Log.e('${error.toString()}');
+    }
+  }
+
+  Future<void> _buildAddress() async {
+    try {
+      final String create = '''
+      CREATE TABLE IF NOT EXISTS address (
+        address TEXT,
+        age INTEGER,
+        weight REAL,
+        dob TEXT,
+        name INTEGER,
+        FOREIGN KEY (name)
+          REFERENCES name (rowId)
+      )
+      ''';
+      await SQL.SqliteController.database.execute(create);
+    } catch (error) {
+      Log.e('${error.toString()}');
+    }
+  }
+
+  Future<void> _buildName() async {
+    try {
+      final String create = '''
+      CREATE TABLE IF NOT EXISTS name (
+        first TEXT,
+        last TEXT
+      )
+      ''';
+      await SQL.SqliteController.database.execute(create);
+    } catch (error) {
+      Log.e('${error.toString()}');
+    }
+  }
+
+  Future<void> _loading() async {
+    try {
+      Map<String, dynamic> name = {'first': 'Steven', 'last': 'Smith'};
+      final database = SQL.SqliteController.database;
+      int nameRowid = await database.insert('name', name);
+      Map<String, dynamic> address = {
+        'address': '2526 Orange Tree',
+        'age': 59,
+        'weight': 209.5,
+        'dob': '1960-12-19T19:56:00Z',
+        'name': nameRowid,
+      };
+      int addressId = await database.insert('address', address);
+      Map<String, dynamic> brother = {'first': 'Richard', 'last': 'Smith'};
+      int broId = await database.insert('name', brother);
+      Map<String, dynamic> bro = {'addressId': addressId, 'nameId': broId};
+      int broRow = await database.insert('siblings', bro);
+      Log.t('broRow $broRow');
+
+      Map<String, dynamic> sister = {'first': 'DeeDee', 'last': 'Grau'};
+      int sisId = await database.insert('name', sister);
+      Map<String, dynamic> sis = {'addressId': addressId, 'nameId': sisId};
+      int sisRow = await database.insert('siblings', sis);
+      Log.t('sisRow $sisRow');
+      Log.t('Done');
+    } catch (error) {
+      Log.e('${error.toString()}');
+    }
   }
 }

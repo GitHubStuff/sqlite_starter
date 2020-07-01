@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const databaseName;
+const databaseName = 'sample.db';
 
 const initalRoute = '/';
 
