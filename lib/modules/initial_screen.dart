@@ -1,10 +1,10 @@
 import 'package:tracers/tracers.dart' as Log;
+import 'package:sqlite_controller/sqlite_controller.dart' as SQL;
 
 import '../modules/initial_module.dart';
 import '../resources/app_localizations.dart';
 import '../resources/constants.dart' as Constants;
 
-import 'package:sqlite_controller/sqlite_controller.dart' as SQL;
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mode_theme/mode_theme.dart';
@@ -26,7 +26,7 @@ class InitialScreen extends ModularStatelessWidget<InitialModule> {
             },
           )
         ],
-        title: Text(tr(context, 'Title')), //TODO provide translation
+        title: Text(tr(context, 'Title')), //TODO provide translations in "languages/en.json"
       ),
       body: _InitialWidget(), // body(context),
       floatingActionButton: FloatingActionButton(
@@ -46,6 +46,7 @@ class _InitialWidget extends StatelessWidget {
     return Text('Initial Widget');
   }
 
+  //MARK: Creates a really uses collection of tables to serve as a guide for sqlite development
   void _buildDatabase() async {
     try {
       await SQL.SqliteController.initialize(name: Constants.databaseName);

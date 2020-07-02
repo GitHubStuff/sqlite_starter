@@ -4,7 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mode_theme/mode_theme.dart';
-import 'package:sqlite_developer/sqlite_developer.dart';
+import 'package:sqlite_explorer/sqlite_explorer.dart';
 import 'package:sqlite_controller/sqlite_controller.dart' as SQL;
 
 import '../modules/initial_screen.dart';
@@ -60,7 +60,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       home: SqliteScreenWidget(
         childWidget: InitialScreen(),
-        sqliteIdentity: SQL.SQLiteIdentity(databaseName: 'flutter_sqlite_developer.db'),
+        sqliteIdentity: SQL.SQLiteIdentity(databaseName: Constants.databaseName),
         enabled: true,
       ),
       title: 'FHCP',
