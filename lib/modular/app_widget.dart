@@ -1,4 +1,3 @@
-
 import 'package:flutter/foundation.dart' as Foundation;
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -45,7 +44,7 @@ class AppWidget extends StatelessWidget {
           dark: Colors.blueGrey,
         );
         ModeDefiniation.primaryModeColor = ModeColor(
-          light: Colors.blueAccent,
+          light: Colors.deepPurple,
           dark: Colors.grey,
         );
         return (brightness == Brightness.light) ? ModeTheme.light : ModeTheme.dark;
@@ -60,10 +59,10 @@ class AppWidget extends StatelessWidget {
   Widget _materialApp(BuildContext context, ThemeData themeData) {
     return MaterialApp(
       home: SqliteScreenWidget(
-            childWidget: InitialScreen(),
-            sqliteIdentity: SQL.SQLiteIdentity(databaseName: 'flutter_sqlite_developer.db'),
-            enabled: true,
-          ),
+        childWidget: InitialScreen(),
+        sqliteIdentity: SQL.SQLiteIdentity(databaseName: 'flutter_sqlite_developer.db'),
+        enabled: true,
+      ),
       title: 'FHCP',
       theme: themeData,
       initialRoute: Constants.initalRoute,

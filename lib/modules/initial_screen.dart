@@ -52,7 +52,8 @@ class _InitialWidget extends StatelessWidget {
       await _buildSiblings();
       await _buildAddress();
       await _buildName();
-      _loading();
+      await _loading();
+      await _getTheColumns();
     } catch (error) {
       Log.e('${error.toString()}');
     }
@@ -137,6 +138,17 @@ class _InitialWidget extends StatelessWidget {
       Log.t('Done');
     } catch (error) {
       Log.e('${error.toString()}');
+    }
+  }
+
+  Future<void> _getTheColumns() async {
+    final database = SQL.SqliteController.database;
+    final sql = 'PRAGMA table_info(address)';
+    List<Map<String, dynamic>> results = await database.rawQuery(sql);
+    Log.v('result: ${results.toString()}');
+    for (Map<String, dynamic> row in results) {
+      final name = row['name'];
+      Log.v('name $name');
     }
   }
 }
