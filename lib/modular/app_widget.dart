@@ -18,7 +18,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (!Foundation.kReleaseMode) {
-      BlocSupervisor.delegate = LoggingBlocDelegate();
+      Bloc.observer = LoggingBlocObserver();
     }
     return _blocProviders(context);
   }
