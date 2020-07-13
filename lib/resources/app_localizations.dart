@@ -6,7 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tracers/tracers.dart' as Log;
 
+// Translate a key to a string from the "/languages/{name}.json" language key/value pairs
 String tr(BuildContext context, String key) {
+  // To avoid crashing any value NOT in the translate package will just return
+  // the un-translated text.
   if (Foundation.kReleaseMode) {
     return AppLocalizations.of(context).translate(key) ?? key;
   }

@@ -1,9 +1,10 @@
+import 'package:sqlite_starter/flavor_config.dart';
+import 'package:sqlite_starter/resources/widgets/theme_icon_widget.dart';
 import 'package:tracers/tracers.dart' as Log;
 import 'package:sqlite_controller/sqlite_controller.dart' as SQL;
 
 import '../modules/initial_module.dart';
 import '../resources/app_localizations.dart';
-import '../resources/constants.dart' as Constants;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -20,7 +21,7 @@ class InitialScreen extends ModularStatelessWidget<InitialModule> {
       appBar: AppBar(
         actions: <Widget>[
           IconButton(
-            icon: Constants.modeIcon,
+            icon: ThemeIconWidget(),
             onPressed: () {
               ModeTheme.of(context).toggleBrightness();
             },
@@ -42,14 +43,15 @@ class InitialScreen extends ModularStatelessWidget<InitialModule> {
 class _InitialWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //TODO: Build proper database
     _buildDatabase();
-    return Text('Initial Widget');
+    return Text('Useless database in place');
   }
 
-  //MARK: Creates a really uses collection of tables to serve as a guide for sqlite development
+  //MARK: Creates a really useless collection of tables to serve as a guide for sqlite development
   void _buildDatabase() async {
     try {
-      await SQL.SqliteController.initialize(name: Constants.databaseName);
+      await SQL.SqliteController.initialize(name: FlavorConfig.instance.values.sqliteDatabaseName);
       await _buildSiblings();
       await _buildAddress();
       await _buildName();

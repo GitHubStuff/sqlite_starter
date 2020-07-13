@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mode_theme/mode_theme.dart';
 import 'package:sqlite_explorer/sqlite_explorer.dart';
 import 'package:sqlite_controller/sqlite_controller.dart' as SQL;
+import 'package:sqlite_starter/flavor_config.dart';
+import 'package:tracers/tracers.dart' as Log;
 
 import '../modules/initial_screen.dart';
 import 'logging_bloc_delegate.dart';
@@ -38,15 +40,18 @@ class AppWidget extends StatelessWidget {
   ModeTheme _modeTheme(BuildContext context) {
     return ModeTheme(
       themeDataFunction: (brightness) {
-        textColorDarkMode[TextKeys.caption] = Colors.yellowAccent;
-        ModeDefiniation.buttonModeColor = ModeColor(
-          light: Colors.lightBlueAccent,
-          dark: Colors.blueGrey,
-        );
-        ModeDefiniation.primaryModeColor = ModeColor(
-          light: Colors.deepPurple,
-          dark: Colors.grey,
-        );
+        //TODO: change colors for
+        // buttonModeColor
+        // cardColor
+        // contrastColors
+        // dialogModeColor
+        // disabledColor
+        // iconBrightness
+        // iconColors
+        // primaryModeColor
+        // productModeColor
+        // scaffoldColors
+
         return (brightness == Brightness.light) ? ModeTheme.light : ModeTheme.dark;
       },
       defaultBrightness: Brightness.dark,
@@ -57,13 +62,24 @@ class AppWidget extends StatelessWidget {
   }
 
   Widget _materialApp(BuildContext context, ThemeData themeData) {
+    if (FlavorConfig.instance.values.sqliteDatabaseName == null) {
+      final message = 'Set "sqliteDatabaseName" to a non-null string for ${FlavorConfig.instance.flavor.toString()}';
+      Log.c(message);
+      throw FlutterError(message);
+    }
+    if (FlavorConfig.instance.values.sqliteDevelopment == null) {
+      final message = 'Set "sqliteDevelopment" to a non-null boolean for ${FlavorConfig.instance.flavor.toString()}';
+      Log.c(message);
+      throw FlutterError(message);
+    }
+
     return MaterialApp(
       home: SqliteScreenWidget(
         childWidget: InitialScreen(),
-        sqliteIdentity: SQL.SQLiteIdentity(databaseName: Constants.databaseName),
-        enabled: true,
+        sqliteIdentity: SQL.SQLiteIdentity(databaseName: FlavorConfig.instance.values.sqliteDatabaseName),
+        enabled: FlavorConfig.instance.values.sqliteDevelopment,
       ),
-      title: 'FHCP',
+      title: '...',
       theme: themeData,
       initialRoute: Constants.initalRoute,
       onGenerateRoute: Modular.generateRoute,

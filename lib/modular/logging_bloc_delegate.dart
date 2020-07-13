@@ -1,3 +1,4 @@
+// Provides logging for Bloc transitions and error reporting
 import 'package:bloc/bloc.dart';
 import 'package:tracers/tracers.dart' as Log;
 

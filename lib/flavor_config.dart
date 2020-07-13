@@ -9,9 +9,13 @@ import 'package:flutter/foundation.dart';
 import 'package:tracers/tracers.dart' as Log;
 
 // TODO: Modify class to include values needed for given flavor.
+// These values are then accessable by FlavorConfig.instance.values.{name}
 class FlavorValues {
+  final String sqliteDatabaseName;
+  final bool sqliteDevelopment;
+//  final String flavorName;
 //  final String servicesUpdateListUrl;
-//  FlavorValues({@required this.servicesUpdateListUrl});
+  FlavorValues({@required this.sqliteDatabaseName, @required this.sqliteDevelopment});
 }
 
 enum Flavor {

@@ -1,7 +1,7 @@
 name: sqlite_starter
 description: Template project for apps that need sqlite
 publish_to: "none"
-version: 0.0.3+0
+version: 0.0.4
 
 environment:
   sdk: ">=2.8.0 <3.0.0"
@@ -31,6 +31,9 @@ dependencies:
   sqlite_explorer:
     git:
       url: https://github.com/GitHubStuff/sqlite_explorer.git
+  font_awesome_flutter:
+    git:
+      url: https://github.com/GitHubStuff/font_awesome_flutter.git
   # Add Project specific packages here ...
 
 dev_dependencies:

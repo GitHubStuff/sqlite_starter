@@ -6,12 +6,12 @@ import 'package:equatable/equatable.dart';
 part 'initial_event.dart';
 part 'initial_state.dart';
 
-class InitialBloc extends Bloc<InitialEvent, InitialState> {
-  InitialBloc(InitialState initialState) : super(initialState);
+class InitialBloc extends Bloc<InitialEvent, InitialStateClass> {
+  InitialBloc(InitialStateClass initialState) : super(initialState);
 
   
   @override
-  Stream<InitialState> mapEventToState(
+  Stream<InitialStateClass> mapEventToState(
     InitialEvent event,
   ) async* {
     // TODO: implement mapEventToState
