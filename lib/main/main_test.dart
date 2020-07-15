@@ -11,7 +11,7 @@ void main() {
     sqliteDatabaseName: _databaseName,
     sqliteDevelopment: _exposeSql,
   );
-  FlavorConfig(flavor: Flavor.DEVICE, values: values);
+  FlavorConfig(flavor: Flavor.TEST, values: values);
   runApp(
     ModularApp(module: AppModule()),
   );

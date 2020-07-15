@@ -11,7 +11,7 @@ void main() {
     sqliteDatabaseName: _databaseName,
     sqliteDevelopment: false,
   );
-  FlavorConfig(flavor: Flavor.DEVICE, values: values);
+  FlavorConfig(flavor: Flavor.RELEASE, values: values);
   runApp(
     ModularApp(module: AppModule()),
   );
