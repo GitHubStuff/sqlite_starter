@@ -13,7 +13,7 @@ dependencies:
   auto_size_text: ^2.1.0 # Automatically resizes text to fit perfectly within its bounds.
   cupertino_icons: ^0.1.3
   enum_to_string: ^1.0.9
-  equatable: ^1.2.0 # Needed for flutter_bloc
+  equatable: ^1.2.2 # Needed for flutter_bloc
   flutter_bloc: ^5.0.1 # Widges to implement BLoC pattern
   flutter_localizations: # Flutter SDK for internalization
     sdk: flutter
