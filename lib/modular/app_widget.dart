@@ -6,9 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mode_theme/mode_theme.dart';
 import 'package:sqlite_explorer/sqlite_explorer.dart';
 import 'package:sqlite_controller/sqlite_controller.dart' as SQL;
-import 'package:sqlite_starter/flavor_config.dart';
 import 'package:tracers/tracers.dart' as Log;
 
+import '../flavor_config.dart';
 import '../modules/initial_screen.dart';
 import 'logging_bloc_delegate.dart';
 import '../resources/constants.dart' as Constants;

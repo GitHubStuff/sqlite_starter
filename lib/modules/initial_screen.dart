@@ -1,10 +1,10 @@
-import 'package:sqlite_starter/flavor_config.dart';
-import 'package:sqlite_starter/resources/widgets/theme_icon_widget.dart';
 import 'package:tracers/tracers.dart' as Log;
 import 'package:sqlite_controller/sqlite_controller.dart' as SQL;
 
+import '../flavor_config.dart';
 import '../modules/initial_module.dart';
 import '../resources/app_localizations.dart';
+import '../resources/widgets/theme_icon_widget.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
