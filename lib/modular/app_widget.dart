@@ -41,16 +41,17 @@ class AppWidget extends StatelessWidget {
     return ModeTheme(
       themeDataFunction: (brightness) {
         //TODO: change colors for
-        // buttonModeColor
-        // cardColor
-        // contrastColors
-        // dialogModeColor
-        // disabledColor
-        // iconBrightness
-        // iconColors
-        // primaryModeColor
-        // productModeColor
-        // scaffoldColors
+/*
+        ModeDefiniation.buttonModeColor = ModeColor(light: Colors.lightBlue, dark: Colors.deepPurple);
+        ModeDefiniation.cardColor = ModeColor(light: Colors.lightBlue[400], dark: Colors.black87);
+        ModeDefiniation.dialogModeColor = ModeColor(light: Gainsboro, dark: Colors.deepPurple);
+        ModeDefiniation.disabledColors = ModeColor(light: Colors.grey, dark: Colors.blueGrey);
+        ModeDefiniation.iconBrightness = ModeColor(light: Colors.grey, dark: Colors.black45);
+        ModeDefiniation.iconColors = ModeColor(light: Colors.black87, dark: Colors.white70);
+        ModeDefiniation.primaryModeColor = ModeColor(light: Colors.green, dark: Colors.grey);
+        ModeDefiniation.productModeColor = ModeColor(light: Colors.orangeAccent, dark: Colors.amber);
+        ModeDefiniation.scaffoldColors = ModeColor(light: Colors.white, dark: Colors.black);
+*/
 
         return (brightness == Brightness.light) ? ModeTheme.light : ModeTheme.dark;
       },
