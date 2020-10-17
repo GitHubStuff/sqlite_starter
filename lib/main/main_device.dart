@@ -6,6 +6,7 @@ import '../flavor_config.dart';
 
 const _databaseName = 'device.db';
 const _exposeSql = true;
+
 void main() {
   final values = FlavorValues(
     sqliteDatabaseName: _databaseName,

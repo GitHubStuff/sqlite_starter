@@ -8,8 +8,8 @@ class InitialModule extends ChildModule {
   List<Bind> get binds => [];
 
   @override
-  List<Router> get routers => [
-        Router(Constants.initalRoute, child: (_, args) => InitialScreen()),
+  List<ModularRouter> get routers => [
+        ModularRouter(Constants.initalRoute, child: (_, args) => InitialScreen()),
       ];
 
   static Inject get to => Inject<AppWidget>.of();
