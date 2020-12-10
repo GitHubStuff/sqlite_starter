@@ -4,7 +4,8 @@ publish_to: "none"
 version: 0.0.6
 
 environment:
-  sdk: ">=2.8.0 <3.0.0"
+  sdk: ">=2.10.0 <3.0.0"
+  flutter: ">=1.22.0"
 
 dependencies:
   flutter:
@@ -14,26 +15,19 @@ dependencies:
   cupertino_icons: ^1.0.0
   enum_to_string: ^1.0.13
   equatable: ^1.2.5 # Needed for flutter_bloc
-  flutter_bloc: ^6.0.6 # Widges to implement BLoC pattern
+  flutter_bloc: ^6.1.1 # Widges to implement BLoC pattern
   flutter_localizations: # Flutter SDK for internalization
     sdk: flutter
   flutter_modular: ^2.0.1 # Smart project structure with dependency injection and route management
   mode_theme:
-    git:
-      url: https://github.com/GitHubStuff/mode_theme.git
-  tracers:
-    git:
-      url: https://github.com/GitHubStuff/tracers.git
+    path: ../mode_theme
   # SQLite extras
   sqlite_controller:
-    git:
-      url: https://github.com/GitHubStuff/sqlite_controller.git
+    path: ../sqlite_controller
   sqlite_explorer:
-    git:
-      url: https://github.com/GitHubStuff/sqlite_explorer.git
+    path: ../sqlite_explorer
   font_awesome_flutter:
-    git:
-      url: https://github.com/GitHubStuff/font_awesome_flutter.git
+    path: ../font_awesome_flutter
   # Add Project specific packages here ...
 
 dev_dependencies:
