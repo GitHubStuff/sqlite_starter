@@ -1,35 +1,33 @@
 name: sqlite_starter
 description: Template project for apps that need sqlite
 publish_to: "none"
-version: 0.0.6
+version: 0.0.7
 
 environment:
-  sdk: ">=2.10.0 <3.0.0"
-  flutter: ">=1.22.0"
+  sdk: ">=2.10.4 <3.0.0"
+  flutter: ">=1.22.5"
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations: # Flutter SDK for internalization
+    sdk: flutter
+  font_awesome_flutter:
+    path: ../font_awesome_flutter
+  theme_package:
+    path: ../theme_package
+  # SQLite extras
+  sqlite_controller:
+    path: ../sqlite_controller
+  sqlite_explorer:
+    path: ../sqlite_explorer
   after_layout: ^1.0.7+2 # Execute code after first layout
   auto_size_text: ^2.1.0 # Automatically resizes text to fit perfectly within its bounds.
   cupertino_icons: ^1.0.0
   enum_to_string: ^1.0.13
   equatable: ^1.2.5 # Needed for flutter_bloc
   flutter_bloc: ^6.1.1 # Widges to implement BLoC pattern
-  flutter_localizations: # Flutter SDK for internalization
-    sdk: flutter
   flutter_modular: ^2.0.1 # Smart project structure with dependency injection and route management
-  mode_theme:
-    path: ../mode_theme
-  # SQLite extras
-  sqlite_controller:
-    path: ../sqlite_controller
-  sqlite_explorer:
-    path: ../sqlite_explorer
-  font_awesome_flutter:
-    path: ../font_awesome_flutter
-  # Add Project specific packages here ...
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
